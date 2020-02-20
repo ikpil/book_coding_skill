@@ -1,5 +1,8 @@
-#include "chapter_1_2.h"
 #include <iostream>
+
+#include "chapter_1_2.h"
+#include "state.h"
+
 
 
 namespace coding_skill 
@@ -70,13 +73,6 @@ void Chapter1_2::namingMagicNumber()
     }
 
     // 좋은 예
-    enum State 
-    {
-        WALK,
-        JUMP,
-        ATTACK,
-    };
-
     State state2 = WALK;
     if (state == JUMP)
     {
