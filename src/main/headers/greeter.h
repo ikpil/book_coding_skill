@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 
 namespace coding_skill
@@ -11,4 +12,3 @@ public:
 };
 
 } // namespace coding_skill
-

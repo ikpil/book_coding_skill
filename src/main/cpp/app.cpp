@@ -4,16 +4,15 @@
 
 #include <iostream>
 #include <stdlib.h>
-#include "app.h"
+
+#include "greeter.h"
 #include "sample.h"
 
-std::string coding_skill::Greeter::greeting() {
-    return std::string("Hello, World!");
-}
+using namespace coding_skill;
 
 int main () {
-    coding_skill::Greeter greeter;
+    Greeter greeter;
     std::cout << greeter.greeting() << std::endl;
-    std::cout << Sample::add(1, 1) << std::endl;
+    std::cout << Sample::add(144, 111) << std::endl;
     return 0;
 }
