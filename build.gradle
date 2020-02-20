@@ -20,3 +20,8 @@ plugins {
 application {
     targetMachines.add(machines.windows.x86_64)
 }
+
+task run(type: Exec) {
+    dependsOn build
+    commandLine 'build/exe/main/debug/coding_skill.exe'
+}
