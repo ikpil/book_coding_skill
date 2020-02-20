@@ -9,12 +9,14 @@
 
 #include "chapter.h"
 #include "chapter_1_1.h"
+#include "chapter_1_2.h"
 
 using namespace coding_skill;
 
 int main () {
     std::vector<std::shared_ptr<Chapter>> chapters;
     chapters.push_back(std::make_shared<Chapter1_1>());
+    chapters.push_back(std::make_shared<Chapter1_2>());
 
     for (auto chapter : chapters)
     {
