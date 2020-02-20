@@ -4,15 +4,21 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <vector>
+#include <memory>
 
-#include "greeter.h"
-#include "sample.h"
+#include "chapter.h"
+#include "chapter_1_1.h"
 
 using namespace coding_skill;
 
 int main () {
-    Greeter greeter;
-    std::cout << greeter.greeting() << std::endl;
-    std::cout << Sample::add(144, 111) << std::endl;
+    std::vector<std::shared_ptr<Chapter>> chapters;
+    chapters.push_back(std::make_shared<Chapter1_1>());
+
+    for (auto chapter : chapters)
+    {
+        chapter->learn();
+    }
     return 0;
 }
