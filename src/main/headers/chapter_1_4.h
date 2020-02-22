@@ -9,6 +9,8 @@ class Chapter1_4 : public Chapter
 public:
     virtual ~Chapter1_4();
     virtual void learn();
+
+    void useAssert();
 };
 
 }

@@ -2,6 +2,7 @@
 
 enum State
 {
+    WAIT,
     WALK,
     JUMP,
     ATTACK,
