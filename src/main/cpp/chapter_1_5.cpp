@@ -16,6 +16,7 @@ void Chapter1_5::learn()
 
     useMinMax();
     useWrapAround();
+    useEarlyReturn();
 }
 
 void Chapter1_5::useMinMax()
@@ -79,6 +80,52 @@ float Chapter1_5::wrap(float x, float low, float high)
     assert(low < high);
     const float n = std::fmod(x - low, high - low);
     return (n >= 0) ? (n + low) : (n + high);
+}
+
+void Chapter1_5::useEarlyReturn()
+{
+    // 조기 리턴 사용 예, 함수 일일이 만들기 귀찮아서 do ~ while 을 이용함
+
+    // 나쁜 예,
+    do {
+        if (health > 0) {
+            if (lifeTime > 0) {
+                // 로직 처리 ...
+            }
+        }
+
+    } while (false);
+
+    // 좋은 예
+    do {
+        if (health <= 0)
+            break;
+
+        if (lifeTime <= 0)
+            break;
+        
+        // 로직 처리 ...
+
+    } while (false);
+
+    // 더 좋은 예
+    do {
+        if (isDead())
+            break;
+
+        // 로직 처리 ...
+    } while (false);
+}
+
+bool Chapter1_5::isDead()
+{
+    if (health <= 0)
+        return true;
+
+    if (lifeTime <= 0)
+        return true;
+
+    return false;
 }
 
 }

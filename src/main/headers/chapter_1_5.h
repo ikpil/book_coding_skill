@@ -23,6 +23,13 @@ public:
     void useWrapAround();
     int wrap(int x, int low, int high);
     float wrap(float x, float low, float high);
+
+    void useEarlyReturn();
+    bool isDead();
+
+private:
+    int health = 0;
+    int lifeTime = 0;
 };
 
 }
