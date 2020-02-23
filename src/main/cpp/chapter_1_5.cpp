@@ -55,6 +55,30 @@ void Chapter1_5::useMinMax()
 
 void Chapter1_5::useWrapAround()
 {
+    int x = 10;
 
+    // 나쁜 예
+    if (x >= 10) {
+        x = 0;
+    } else if (x < 0) {
+        x = 9;
+    }
+
+    x = wrap(x, 0, 10);
 }
+
+int Chapter1_5::wrap(int x, int low, int high)
+{
+    assert(low < high);
+    const int n = (x - low) % (high - low);
+    return (n >= 0) ? (n + low) : (n + high);
+}
+
+float Chapter1_5::wrap(float x, float low, float high)
+{
+    assert(low < high);
+    const float n = std::fmod(x - low, high - low);
+    return (n >= 0) ? (n + low) : (n + high);
+}
+
 }

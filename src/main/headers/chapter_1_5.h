@@ -21,6 +21,8 @@ public:
     }
 
     void useWrapAround();
+    int wrap(int x, int low, int high);
+    float wrap(float x, float low, float high);
 };
 
 }
