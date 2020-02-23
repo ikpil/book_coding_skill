@@ -12,6 +12,7 @@
 #include "chapter_1_2.h"
 #include "chapter_1_3.h"
 #include "chapter_1_4.h"
+#include "chapter_1_5.h"
 
 using namespace coding_skill;
 
@@ -21,6 +22,7 @@ int main () {
     chapters.push_back(std::make_shared<Chapter1_2>());
     chapters.push_back(std::make_shared<Chapter1_3>());
     chapters.push_back(std::make_shared<Chapter1_4>());
+    chapters.push_back(std::make_shared<Chapter1_5>());
 
     for (auto chapter : chapters)
     {
