@@ -65,6 +65,7 @@ void Chapter1_5::useWrapAround()
         x = 9;
     }
 
+    // 좋은 예
     x = wrap(x, 0, 10);
 }
 
