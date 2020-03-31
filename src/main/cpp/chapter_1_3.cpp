@@ -69,16 +69,16 @@ void Chapter1_3::convertConditionalExpressionToFunction2()
 {
     // 나쁜 예, 이유 계산식이 로직과 붙어 있어 의미 파악하기 힘듬
     position.x += velocity.x * deltaTime;
-    if (position.x > world.getWidth() - Constrants::ACTOR_WIDTH / 2.0f)
+    if (position.x > world.getWidth() - Constants::ACTOR_WIDTH / 2.0f)
     {
-        position.x = world.getWidth() - Constrants::ACTOR_WIDTH / 2.0f;
-        velocity.x = -Constrants::ACTOR_SPEED;
+        position.x = world.getWidth() - Constants::ACTOR_WIDTH / 2.0f;
+        velocity.x = -Constants::ACTOR_SPEED;
     }
 
-    if (position.x < Constrants::ACTOR_WIDTH / 2.0f)
+    if (position.x < Constants::ACTOR_WIDTH / 2.0f)
     {
-        position.x = Constrants::ACTOR_WIDTH / 2.0f;
-        velocity.x = Constrants::ACTOR_SPEED;
+        position.x = Constants::ACTOR_WIDTH / 2.0f;
+        velocity.x = Constants::ACTOR_SPEED;
     }
 
 
@@ -102,12 +102,12 @@ void Chapter1_3::move(float deltaTime)
 
 float Chapter1_3::rightBorder()
 {
-    return world.getWidth() - Constrants::ACTOR_WIDTH / 2.0f;
+    return world.getWidth() - Constants::ACTOR_WIDTH / 2.0f;
 }
 
 float Chapter1_3::leftBorder()
 {
-    return Constrants::ACTOR_WIDTH / 2.0f;
+    return Constants::ACTOR_WIDTH / 2.0f;
 }
 
 bool Chapter1_3::isTurnLeft()
@@ -118,7 +118,7 @@ bool Chapter1_3::isTurnLeft()
 void Chapter1_3::turnLeft()
 {
     position.x = leftBorder();
-    velocity.x = Constrants::ACTOR_SPEED;
+    velocity.x = Constants::ACTOR_SPEED;
 }
 
 bool Chapter1_3::isTurnRight()
@@ -129,7 +129,7 @@ bool Chapter1_3::isTurnRight()
 void Chapter1_3::turnRight()
 {
     position.x = rightBorder();
-    velocity.x = Constrants::ACTOR_SPEED;
+    velocity.x = Constants::ACTOR_SPEED;
 }
 
 }

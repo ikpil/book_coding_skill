@@ -37,6 +37,9 @@ public:
     void fall();
     void move();
 
+    void duplicatedComplexConditionRemovalWorst();
+    void duplicatedComplexConditionRemovalBest();
+
 private:
     int health = 0;
     int lifeTime = 0;

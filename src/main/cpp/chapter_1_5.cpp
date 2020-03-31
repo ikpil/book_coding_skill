@@ -30,6 +30,10 @@ void Chapter1_5::learn()
     // 중복 조건 제거
     duplicationConditionRemovalWorst();
     duplicationConditionRemovalBest();
+
+    // 중복된 복합 조건 제거
+    duplicatedComplexConditionRemovalWorst();
+    duplicatedComplexConditionRemovalBest();
 }
 
 void Chapter1_5::useMinMax()
@@ -194,14 +198,14 @@ void Chapter1_5::duplicationConditionRemovalWorst()
 {
     if (state == State::STATE_FALL)
     {
-        if (waitTimer > Constrants::WAIT_TIME)
+        if (waitTimer > Constants::WAIT_TIME)
         {
             fall();
         }
     }
     if (state == State::STATE_MOVE)
     {
-        if (waitTimer > Constrants::WAIT_TIME)
+        if (waitTimer > Constants::WAIT_TIME)
         {
             move();
         }
@@ -212,7 +216,7 @@ void Chapter1_5::duplicationConditionRemovalWorst()
 void Chapter1_5::duplicationConditionRemovalBest()
 {
     // 조기 리턴으로 조건의 반대로 리턴 처리
-    if (waitTimer <= Constrants::WAIT_TIME)
+    if (waitTimer <= Constants::WAIT_TIME)
     {
         return;
     }
@@ -226,6 +230,26 @@ void Chapter1_5::duplicationConditionRemovalBest()
     {
         move();
     }
+}
+
+// 중복된 복합 조건 제거, 안좋은 예
+void Chapter1_5::duplicatedComplexConditionRemovalWorst()
+{
+    if (state == State::STATE_FALL && waitTimer > Constants::WAIT_TIME)
+    {
+        fall();
+    }
+
+    if (state == State::STATE_MOVE && waitTimer > Constants::WAIT_TIME)
+    {
+        move();
+    }
+ }
+
+// 중복된 복합 조건 제거, 좋은 예
+void Chapter1_5::duplicatedComplexConditionRemovalBest()
+{
+
 }
 
 void Chapter1_5::fall()

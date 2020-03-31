@@ -3,7 +3,7 @@
 namespace coding_skill
 {
 
-class Constrants
+class Constants
 {
 public:
     static const int ACTOR_WIDTH = 10;
