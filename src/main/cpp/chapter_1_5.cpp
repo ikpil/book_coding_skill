@@ -249,7 +249,18 @@ void Chapter1_5::duplicatedComplexConditionRemovalWorst()
 // 중복된 복합 조건 제거, 좋은 예
 void Chapter1_5::duplicatedComplexConditionRemovalBest()
 {
+    if (waitTimer > Constants::WAIT_TIME)
+    {
+        if (state == State::STATE_FALL)
+        {
+            fall();
+        }
 
+        if (state == State::STATE_MOVE)
+        {
+            move();
+        }
+    }
 }
 
 void Chapter1_5::fall()
