@@ -1,5 +1,7 @@
 #pragma once
 #include "chapter.h"
+#include "state.h"
+#include "constrants.h"
 #include <cassert>
 
 namespace coding_skill
@@ -30,9 +32,18 @@ public:
     int bonus(int time, int hp);
     int bonus1st(int time, int hp);
 
+    void duplicationConditionRemovalWorst();
+    void duplicationConditionRemovalBest();
+    void fall();
+    void move();
+
 private:
     int health = 0;
     int lifeTime = 0;
+
+    State state = State::ATTACK;
+    int waitTimer = 30;
+
 };
 
 }

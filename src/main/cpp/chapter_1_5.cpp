@@ -14,11 +14,22 @@ void Chapter1_5::learn()
 {
     std::cout << "Chapter 1.5 learn " << std::endl;
 
+    // 최소/최대
     useMinMax();
+
+    // 랩 어라운드
     useWrapAround();
+
+    // 조기 리턴
     useEarlyReturn();
+    
+    // if ~ else 단순화
     bonus(10, 20);
     bonus1st(10, 20);
+
+    // 중복 조건 제거
+    duplicationConditionRemovalWorst();
+    duplicationConditionRemovalBest();
 }
 
 void Chapter1_5::useMinMax()
@@ -176,6 +187,55 @@ int Chapter1_5::bonus1st(int time, int hp)
     }
 
     return 1000;
+}
+
+// 중복 조건 제거, 안좋은 예
+void Chapter1_5::duplicationConditionRemovalWorst()
+{
+    if (state == State::STATE_FALL)
+    {
+        if (waitTimer > Constrants::WAIT_TIME)
+        {
+            fall();
+        }
+    }
+    if (state == State::STATE_MOVE)
+    {
+        if (waitTimer > Constrants::WAIT_TIME)
+        {
+            move();
+        }
+    }
+}
+
+// 중복 조건 제거, 좋은 예
+void Chapter1_5::duplicationConditionRemovalBest()
+{
+    // 조기 리턴으로 조건의 반대로 리턴 처리
+    if (waitTimer <= Constrants::WAIT_TIME)
+    {
+        return;
+    }
+
+    if (state == State::STATE_FALL)
+    {
+        fall();
+    }
+
+    if (state == State::STATE_MOVE)
+    {
+        move();
+    }
+}
+
+void Chapter1_5::fall()
+{
+
+}
+
+void Chapter1_5::move()
+{
+
 }
 
 }

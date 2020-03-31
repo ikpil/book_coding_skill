@@ -7,4 +7,7 @@ enum State
     JUMP,
     ATTACK,
     DAMAGE,
+
+    STATE_FALL,
+    STATE_MOVE,
 };
