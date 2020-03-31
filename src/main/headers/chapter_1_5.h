@@ -27,6 +27,9 @@ public:
     void useEarlyReturn();
     bool isDead();
 
+    int bonus(int time, int hp);
+    int bonus1st(int time, int hp);
+
 private:
     int health = 0;
     int lifeTime = 0;

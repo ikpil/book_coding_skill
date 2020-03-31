@@ -17,6 +17,8 @@ void Chapter1_5::learn()
     useMinMax();
     useWrapAround();
     useEarlyReturn();
+    bonus(10, 20);
+    bonus1st(10, 20);
 }
 
 void Chapter1_5::useMinMax()
@@ -127,6 +129,53 @@ bool Chapter1_5::isDead()
         return true;
 
     return false;
+}
+
+// 보너스 처리에 대한 안 좋은 예
+int Chapter1_5::bonus(int time, int hp)
+{
+    // if ~ else 중첩이 많아짐에 따라 보기가 어려운 코드라고 할 수 있다.
+    int result = 0;
+    if (time <= 50)
+    {
+        if (hp >= 30)
+        {
+            result = 1000;
+        }
+        else
+        {
+            result = 500;
+        }
+    }
+    else if (time <= 100)
+    {
+        result = 200;
+    }
+
+    return result;
+}
+
+
+// 보너스 처리에 대한 좋은 예
+int Chapter1_5::bonus1st(int time, int hp)
+{
+    // if ~ else 중첩을 없앰으로써 더 보기 좋은 코드가 되었다고 평가 된다.
+    if (time > 100)
+    {
+        return 0;
+    }
+
+    if (time > 50)
+    {
+        return 200;
+    }
+
+    if (time < 30)
+    {
+        return 500;
+    }
+
+    return 1000;
 }
 
 }
