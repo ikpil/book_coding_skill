@@ -34,6 +34,10 @@ void Chapter1_5::learn()
     // 중복된 복합 조건 제거
     duplicatedComplexConditionRemovalWorst();
     duplicatedComplexConditionRemovalBest();
+
+    // 조건식 국소화
+    conditionLocalizationWorst();
+    conditionLocalizationBest();
 }
 
 void Chapter1_5::useMinMax()
@@ -272,5 +276,17 @@ void Chapter1_5::move()
 {
 
 }
+
+void Chapter1_5::conditionLocalizationWorst()
+{
+
+}
+
+void Chapter1_5::conditionLocalizationBest()
+{
+
+}
+
+
 
 }

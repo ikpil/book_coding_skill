@@ -40,6 +40,9 @@ public:
     void duplicatedComplexConditionRemovalWorst();
     void duplicatedComplexConditionRemovalBest();
 
+    void conditionLocalizationWorst();
+    void conditionLocalizationBest();
+
 private:
     int health = 0;
     int lifeTime = 0;
