@@ -277,16 +277,45 @@ void Chapter1_5::move()
 
 }
 
+// 조건식 국소화, 안좋은 예
 void Chapter1_5::conditionLocalizationWorst()
 {
-
+    if (isDash())
+    {
+        position += direction * 10.0f;
+    }
+    else
+    {
+        position += direction * 5.0f;
+    }
+    
 }
 
+// 조건식 국소화, 좋은 예
 void Chapter1_5::conditionLocalizationBest()
 {
+    // 1차, 안 좋은 예에서 계산식이 두개로 되어 있기 때문에, 한개로 변경한 상태
+    {
+        float speed = 5.0f;
+        if (isDash())
+        {
+            speed = 10.0f;
+        }
+        position += direction * speed;
+    }
 
+    // 2차, 좋은예, 스피드 계산이 조건식이므로, 스피드 조건식을 국소화해서, 계산식을 만든다
+    position += direction * speed();
 }
 
+float Chapter1_5::speed()
+{
+    return isDash() ? Constants::SPEED_DASH : Constants::SPEED_NORMAL;
+}
 
+bool Chapter1_5::isDash()
+{
+    return true;
+}
 
 }

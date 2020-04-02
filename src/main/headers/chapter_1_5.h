@@ -42,6 +42,8 @@ public:
 
     void conditionLocalizationWorst();
     void conditionLocalizationBest();
+    bool isDash();
+    float speed();
 
 private:
     int health = 0;
@@ -49,6 +51,9 @@ private:
 
     State state = State::ATTACK;
     int waitTimer = 30;
+
+    float position = 0.0f;
+    int direction = 1;
 
 };
 
