@@ -45,6 +45,10 @@ public:
     bool isDash();
     float speed();
 
+    int mappingTableWorst(int id);
+    int mappingTableBest(int id);
+    int mappingTableBest2(int id);
+
 private:
     int health = 0;
     int lifeTime = 0;

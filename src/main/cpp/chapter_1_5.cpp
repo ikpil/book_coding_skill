@@ -2,6 +2,7 @@
 #include <iostream>
 #include <algorithm>
 #include <cassert>
+#include <unordered_map>
 
 namespace coding_skill 
 {
@@ -38,6 +39,11 @@ void Chapter1_5::learn()
     // 조건식 국소화
     conditionLocalizationWorst();
     conditionLocalizationBest();
+
+    // 매핑 테이블 기법
+    mappingTableWorst(1);
+    mappingTableBest(2);
+    mappingTableBest2(3);
 }
 
 void Chapter1_5::useMinMax()
@@ -316,6 +322,34 @@ float Chapter1_5::speed()
 bool Chapter1_5::isDash()
 {
     return true;
+}
+
+// 매핑 테이블 기법, 안좋은 예
+int Chapter1_5::mappingTableWorst(int id) 
+{
+    if (id == 0) return 10;
+    if (id == 1) return 15;
+    if (id == 2) return 30;
+    if (id == 3) return 50;
+
+    return 0;
+}
+
+// 매핑 테이블 기법, 좋은 예
+int Chapter1_5::mappingTableBest(int id)
+{
+    static const int table[] = { 10, 15, 30, 50 };
+    return table[id];
+}
+
+// 매핑 테이블 기법, 배열이 아닌 자료구조로 사용한 예
+int Chapter1_5::mappingTableBest2(int id)
+{
+    static const std::unordered_map<int, int> table = {
+        {0, 10}, {1, 15}, {2, 30}, {3, 50}
+    };
+
+    return table.at(id);
 }
 
 }
