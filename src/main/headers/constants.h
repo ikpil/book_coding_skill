@@ -12,6 +12,10 @@ public:
 
     static const float SPEED_DASH;
     static const float SPEED_NORMAL;
+
+    static const int SWORD = 1;
+    static const int SPEAR = 2;
+    static const int KNIFE = 3;
 };
 
 }

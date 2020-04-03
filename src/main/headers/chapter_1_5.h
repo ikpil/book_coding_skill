@@ -49,6 +49,10 @@ public:
     int mappingTableBest(int id);
     int mappingTableBest2(int id);
 
+    bool mappingConditionWorst(int itemId);
+    bool mappingConditionBest(int itemId);
+    bool mappingConditionBest2(int itemId);
+
 private:
     int health = 0;
     int lifeTime = 0;

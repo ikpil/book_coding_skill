@@ -3,9 +3,11 @@
 #include <algorithm>
 #include <cassert>
 #include <unordered_map>
+#include <unordered_set>
 
-namespace coding_skill 
+namespace coding_skill
 {
+
 Chapter1_5::~Chapter1_5()
 {
 
@@ -23,7 +25,7 @@ void Chapter1_5::learn()
 
     // 조기 리턴
     useEarlyReturn();
-    
+
     // if ~ else 단순화
     bonus(10, 20);
     bonus1st(10, 20);
@@ -44,33 +46,41 @@ void Chapter1_5::learn()
     mappingTableWorst(1);
     mappingTableBest(2);
     mappingTableBest2(3);
+
+    // 매핑 조건
+    mappingConditionWorst(2);
+    mappingConditionBest(3);
+    mappingConditionBest2(1);
 }
 
 void Chapter1_5::useMinMax()
 {
     // 나쁜 예. 상한값
     int x = 11;
-    if (x > 10) {
+    if (x > 10)
+    {
         x = 10;
     }
 
     // 좋은 예
     x = std::min(x, 10);
 
-
     // 나쁜 예, 하한값
-    if (x < 0) {
+    if (x < 0)
+    {
         x = 0;
     }
 
     // 좋은 예
     x = std::max(x - 1, 0);
 
-
     // 나쁜 예, 상/하한 값
-    if (x > 10) {
+    if (x > 10)
+    {
         x = 10;
-    } else if (x < 0) {
+    }
+    else if (x < 0)
+    {
         x = 0;
     }
 
@@ -86,9 +96,12 @@ void Chapter1_5::useWrapAround()
     int x = 10;
 
     // 나쁜 예
-    if (x >= 10) {
+    if (x >= 10)
+    {
         x = 0;
-    } else if (x < 0) {
+    }
+    else if (x < 0)
+    {
         x = 9;
     }
 
@@ -115,9 +128,12 @@ void Chapter1_5::useEarlyReturn()
     // 조기 리턴 사용 예, 함수 일일이 만들기 귀찮아서 do ~ while 을 이용함
 
     // 나쁜 예,
-    do {
-        if (health > 0) {
-            if (lifeTime > 0) {
+    do
+    {
+        if (health > 0)
+        {
+            if (lifeTime > 0)
+            {
                 // 로직 처리 ...
             }
         }
@@ -125,19 +141,21 @@ void Chapter1_5::useEarlyReturn()
     } while (false);
 
     // 좋은 예
-    do {
+    do
+    {
         if (health <= 0)
             break;
 
         if (lifeTime <= 0)
             break;
-        
+
         // 로직 처리 ...
 
     } while (false);
 
     // 더 좋은 예
-    do {
+    do
+    {
         if (isDead())
             break;
 
@@ -179,7 +197,6 @@ int Chapter1_5::bonus(int time, int hp)
 
     return result;
 }
-
 
 // 보너스 처리에 대한 좋은 예
 int Chapter1_5::bonus1st(int time, int hp)
@@ -254,7 +271,7 @@ void Chapter1_5::duplicatedComplexConditionRemovalWorst()
     {
         move();
     }
- }
+}
 
 // 중복된 복합 조건 제거, 좋은 예
 void Chapter1_5::duplicatedComplexConditionRemovalBest()
@@ -275,12 +292,10 @@ void Chapter1_5::duplicatedComplexConditionRemovalBest()
 
 void Chapter1_5::fall()
 {
-
 }
 
 void Chapter1_5::move()
 {
-
 }
 
 // 조건식 국소화, 안좋은 예
@@ -294,7 +309,6 @@ void Chapter1_5::conditionLocalizationWorst()
     {
         position += direction * 5.0f;
     }
-    
 }
 
 // 조건식 국소화, 좋은 예
@@ -325,12 +339,16 @@ bool Chapter1_5::isDash()
 }
 
 // 매핑 테이블 기법, 안좋은 예
-int Chapter1_5::mappingTableWorst(int id) 
+int Chapter1_5::mappingTableWorst(int id)
 {
-    if (id == 0) return 10;
-    if (id == 1) return 15;
-    if (id == 2) return 30;
-    if (id == 3) return 50;
+    if (id == 0)
+        return 10;
+    if (id == 1)
+        return 15;
+    if (id == 2)
+        return 30;
+    if (id == 3)
+        return 50;
 
     return 0;
 }
@@ -338,7 +356,7 @@ int Chapter1_5::mappingTableWorst(int id)
 // 매핑 테이블 기법, 좋은 예
 int Chapter1_5::mappingTableBest(int id)
 {
-    static const int table[] = { 10, 15, 30, 50 };
+    static const int table[] = {10, 15, 30, 50};
     return table[id];
 }
 
@@ -346,10 +364,38 @@ int Chapter1_5::mappingTableBest(int id)
 int Chapter1_5::mappingTableBest2(int id)
 {
     static const std::unordered_map<int, int> table = {
-        {0, 10}, {1, 15}, {2, 30}, {3, 50}
-    };
-
+        {0, 10}, {1, 15}, {2, 30}, {3, 50}};
     return table.at(id);
 }
 
+
+// 매핑 조건 기법, 나쁜 예
+bool Chapter1_5::mappingConditionWorst(int itemId)
+{
+    return (itemId == Constants::SWORD) || (itemId == Constants::SPEAR) || (itemId == Constants::KNIFE);
 }
+
+// 매핑 조건 기법, 좋은 예, 조건 대상을 배열화
+bool Chapter1_5::mappingConditionBest(int itemId)
+{
+    static const int weapons[] = { 
+        Constants::SWORD, 
+        Constants::SPEAR, 
+        Constants::KNIFE 
+    };
+
+    return std::find(&weapons[0], &weapons[3], itemId) != &weapons[3];
+}
+
+// 매핑 조건 기법, 좋은 예, 조건 대상을 자료구조화
+bool Chapter1_5::mappingConditionBest2(int itemId)
+{
+    static const std::unordered_set<int> weapons = { 
+        Constants::SWORD, 
+        Constants::SPEAR, 
+        Constants::KNIFE 
+    };
+
+    return weapons.find(itemId) != weapons.end();
+}
+} // namespace coding_skill
