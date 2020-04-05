@@ -53,6 +53,8 @@ public:
     bool mappingConditionBest(int itemId);
     bool mappingConditionBest2(int itemId);
 
+    
+
 private:
     int health = 0;
     int lifeTime = 0;
