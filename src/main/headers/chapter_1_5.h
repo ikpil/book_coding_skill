@@ -2,6 +2,8 @@
 #include "chapter.h"
 #include "state.h"
 #include "constants.h"
+#include "hand.h"
+#include "rps_result.h"
 #include <cassert>
 
 namespace coding_skill
@@ -53,7 +55,9 @@ public:
     bool mappingConditionBest(int itemId);
     bool mappingConditionBest2(int itemId);
 
-    
+    RPSResult judgementWorst(Hand my, Hand target);
+    RPSResult judgementBest(Hand my, Hand target);
+
 
 private:
     int health = 0;

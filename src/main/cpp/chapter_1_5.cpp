@@ -51,6 +51,9 @@ void Chapter1_5::learn()
     mappingConditionWorst(2);
     mappingConditionBest(3);
     mappingConditionBest2(1);
+
+    judgementWorst(Hand::Paper, Hand::Paper);
+    judgementBest(Hand::Rock, Hand::Paper);
 }
 
 void Chapter1_5::useMinMax()
@@ -398,4 +401,28 @@ bool Chapter1_5::mappingConditionBest2(int itemId)
 
     return weapons.find(itemId) != weapons.end();
 }
+
+// 결정표 기법, Decision table, 나쁜 예, 모두 if 로 조건 체크 해야 해서 복잡해 진다.
+RPSResult Chapter1_5::judgementWorst(Hand my, Hand target)
+{
+    if (my == target) return RPSResult::Draw;
+    if (my == Hand::Rock && target == Hand::Scissors) return RPSResult::Win;
+    if (my == Hand::Scissors&& target == Hand::Paper) return RPSResult::Win;
+    if (my == Hand::Paper&& target == Hand::Rock) return RPSResult::Win;
+
+    return RPSResult::Lose;
+}
+
+// 결정표 기법, Decision table, 좋은 예, 태이블만 보면 된다, 단점으로는 결정표가 크면 클 수록 이것도 복잡해 진다.
+RPSResult Chapter1_5::judgementBest(Hand my, Hand target)
+{
+    static const RPSResult results[3][3] = {
+        { RPSResult::Draw, RPSResult::Win, RPSResult::Lose, },
+        { RPSResult::Lose, RPSResult::Draw, RPSResult::Win, },
+        { RPSResult::Draw, RPSResult::Lose, RPSResult::Win, },
+    };
+
+    return results[my][target];
+}
+
 } // namespace coding_skill
