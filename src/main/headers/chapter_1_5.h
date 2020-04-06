@@ -4,7 +4,9 @@
 #include "constants.h"
 #include "hand.h"
 #include "rps_result.h"
+#include "actor.h"
 #include <cassert>
+#include <memory>
 
 namespace coding_skill
 {
@@ -58,6 +60,8 @@ public:
     RPSResult judgementWorst(Hand my, Hand target);
     RPSResult judgementBest(Hand my, Hand target);
 
+    void nullObjectWorst();
+    void nullObjectBest();
 
 private:
     int health = 0;
@@ -69,6 +73,7 @@ private:
     float position = 0.0f;
     int direction = 1;
 
+    std::shared_ptr<Actor> player;
 };
 
 }

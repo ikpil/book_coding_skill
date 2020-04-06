@@ -1,9 +1,12 @@
-#include "chapter_1_5.h"
 #include <iostream>
 #include <algorithm>
 #include <cassert>
 #include <unordered_map>
 #include <unordered_set>
+
+#include "chapter_1_5.h"
+#include "null_actor.h"
+
 
 namespace coding_skill
 {
@@ -54,6 +57,9 @@ void Chapter1_5::learn()
 
     judgementWorst(Hand::Paper, Hand::Paper);
     judgementBest(Hand::Rock, Hand::Paper);
+
+    nullObjectWorst();
+    nullObjectBest();
 }
 
 void Chapter1_5::useMinMax()
@@ -423,6 +429,35 @@ RPSResult Chapter1_5::judgementBest(Hand my, Hand target)
     };
 
     return results[my][target];
+}
+
+// 널 오브젝트 패턴, 나쁜 예, 널인지를 항상 체크해야 한다
+void Chapter1_5::nullObjectWorst()
+{
+    if (nullptr != player)
+    {
+        // 플레이어에 관한 이동 체크 하고
+        // ...
+        player->move();
+    }
+
+    if (nullptr != player)
+    {
+        // 플레이어에 대한 그리기 체크 하고
+        // ...
+        player->draw();
+    }
+}
+
+// 널 오브젝트 패턴, 좋은 예, 객체가 널일 수 없기 때문에, 체크하지 않아도 된다
+void Chapter1_5::nullObjectBest()
+{
+    player = std::make_shared<NullActor>();
+
+    // 플레이어에 관한 이동 체크 하고
+    // 플레이어에 대한 그리기 체크 하고
+    player->move();
+    player->draw();
 }
 
 } // namespace coding_skill
