@@ -3,6 +3,7 @@
 #include <cassert>
 #include <unordered_map>
 #include <unordered_set>
+#include <functional>
 
 #include "chapter_1_5.h"
 #include "null_actor.h"
@@ -60,6 +61,9 @@ void Chapter1_5::learn()
 
     nullObjectWorst();
     nullObjectBest();
+
+    // 향상된 for loop
+    enchancedForLoop();
 }
 
 void Chapter1_5::useMinMax()
@@ -458,6 +462,29 @@ void Chapter1_5::nullObjectBest()
     // 플레이어에 대한 그리기 체크 하고
     player->move();
     player->draw();
+}
+
+void Chapter1_5::enchancedForLoop()
+{
+    std::vector<std::shared_ptr<Actor>> actors;
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+
+    // 레거시
+    for (auto i = actors.begin(); i != actors.end(); ++i) {
+        (*i)->draw();
+    }
+
+    // 함수식
+    std::for_each(actors.begin(), actors.end(), [](auto i) { i->draw(); });
+
+    // 향상된 루프식
+    for (auto i : actors) {
+        i->draw();
+    }
+
 }
 
 } // namespace coding_skill

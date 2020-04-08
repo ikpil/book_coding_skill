@@ -63,6 +63,8 @@ public:
     void nullObjectWorst();
     void nullObjectBest();
 
+    void enchancedForLoop();
+
 private:
     int health = 0;
     int lifeTime = 0;
