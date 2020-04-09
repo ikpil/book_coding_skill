@@ -64,6 +64,9 @@ void Chapter1_5::learn()
 
     // 향상된 for loop
     enchancedForLoop();
+
+    detectLoopWorst();
+    detectLoopBest();
 }
 
 void Chapter1_5::useMinMax()
@@ -484,6 +487,16 @@ void Chapter1_5::enchancedForLoop()
     for (auto i : actors) {
         i->draw();
     }
+}
+
+
+void Chapter1_5::detectLoopWorst()
+{
+
+}
+
+void Chapter1_5::detectLoopBest()
+{
 
 }
 

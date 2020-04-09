@@ -64,6 +64,8 @@ public:
     void nullObjectBest();
 
     void enchancedForLoop();
+    void detectLoopWorst();
+    void detectLoopBest();
 
 private:
     int health = 0;
