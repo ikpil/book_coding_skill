@@ -489,15 +489,48 @@ void Chapter1_5::enchancedForLoop()
     }
 }
 
-
+// 루프에서 찾기, 나쁜 예, 이터레이터를 직접 선언해서 레거시 loop 를 돌리고 있음
 void Chapter1_5::detectLoopWorst()
 {
+    std::vector<std::shared_ptr<Actor>> actors;
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
 
+    auto fit = actors.end();
+    for (auto it = actors.begin(); it != actors.end(); ++it) {
+        if ((*it)->distance(Position(5.0f, 7.0f)))
+        {
+            fit = it;
+            break;
+        }
+    }
+
+    if (fit != actors.end()) 
+    {
+        (*fit)->move();
+    }
 }
 
+// 루프에서 찾기, 좋은 예, 찾는것을 선언식으로 만들어 사용함
 void Chapter1_5::detectLoopBest()
 {
+    std::vector<std::shared_ptr<Actor>> actors;
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
 
+    // case 1
+    auto fit = std::find_if(actors.begin(), actors.end(), [] (auto p) { 
+        return p->distance(Position(5.0f, 7.0f));
+    });
+
+    if (fit != actors.end())
+    {
+        (*fit)->move();
+    }
 }
 
 } // namespace coding_skill
