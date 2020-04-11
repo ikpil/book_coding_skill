@@ -65,8 +65,13 @@ void Chapter1_5::learn()
     // 향상된 for loop
     enchancedForLoop();
 
+    // 반복문에서 탐색
     detectLoopWorst();
     detectLoopBest();
+
+    // 반복문 내부의 불필요한 조건 분리
+    separationOfUnnecessaryConditionsInsideLoopWorst();
+    separationOfUnnecessaryConditionsInsideLoopBest();
 }
 
 void Chapter1_5::useMinMax()
@@ -531,6 +536,16 @@ void Chapter1_5::detectLoopBest()
     {
         (*fit)->move();
     }
+}
+
+void Chapter1_5::separationOfUnnecessaryConditionsInsideLoopWorst()
+{
+
+}
+
+void Chapter1_5::separationOfUnnecessaryConditionsInsideLoopBest()
+{
+
 }
 
 } // namespace coding_skill

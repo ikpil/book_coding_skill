@@ -67,6 +67,9 @@ public:
     void detectLoopWorst();
     void detectLoopBest();
 
+    void separationOfUnnecessaryConditionsInsideLoopWorst();
+    void separationOfUnnecessaryConditionsInsideLoopBest();
+
 private:
     int health = 0;
     int lifeTime = 0;
