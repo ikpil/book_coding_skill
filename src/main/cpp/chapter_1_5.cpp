@@ -11,6 +11,24 @@
 
 namespace coding_skill
 {
+Chapter1_5::Chapter1_5()
+{
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+    actors.push_back(std::make_shared<NullActor>());
+
+
+    buttons.push_back(std::make_shared<Button>());
+    buttons.push_back(std::make_shared<Button>());
+    buttons.push_back(std::make_shared<Button>());
+    buttons.push_back(std::make_shared<Button>());
+    buttons.push_back(std::make_shared<Button>());
+    buttons.push_back(std::make_shared<Button>());
+}
 
 Chapter1_5::~Chapter1_5()
 {
@@ -474,11 +492,6 @@ void Chapter1_5::nullObjectBest()
 
 void Chapter1_5::enchancedForLoop()
 {
-    std::vector<std::shared_ptr<Actor>> actors;
-    actors.push_back(std::make_shared<NullActor>());
-    actors.push_back(std::make_shared<NullActor>());
-    actors.push_back(std::make_shared<NullActor>());
-    actors.push_back(std::make_shared<NullActor>());
 
     // 레거시
     for (auto i = actors.begin(); i != actors.end(); ++i) {
@@ -497,11 +510,6 @@ void Chapter1_5::enchancedForLoop()
 // 루프에서 찾기, 나쁜 예, 이터레이터를 직접 선언해서 레거시 loop 를 돌리고 있음
 void Chapter1_5::detectLoopWorst()
 {
-    std::vector<std::shared_ptr<Actor>> actors;
-    actors.push_back(std::make_shared<NullActor>());
-    actors.push_back(std::make_shared<NullActor>());
-    actors.push_back(std::make_shared<NullActor>());
-    actors.push_back(std::make_shared<NullActor>());
 
     auto fit = actors.end();
     for (auto it = actors.begin(); it != actors.end(); ++it) {
@@ -521,12 +529,6 @@ void Chapter1_5::detectLoopWorst()
 // 루프에서 찾기, 좋은 예, 찾는것을 선언식으로 만들어 사용함
 void Chapter1_5::detectLoopBest()
 {
-    std::vector<std::shared_ptr<Actor>> actors;
-    actors.push_back(std::make_shared<NullActor>());
-    actors.push_back(std::make_shared<NullActor>());
-    actors.push_back(std::make_shared<NullActor>());
-    actors.push_back(std::make_shared<NullActor>());
-
     // case 1
     auto fit = std::find_if(actors.begin(), actors.end(), [] (auto p) { 
         return p->distance(Position(5.0f, 7.0f));
@@ -540,7 +542,6 @@ void Chapter1_5::detectLoopBest()
 
 void Chapter1_5::separationOfUnnecessaryConditionsInsideLoopWorst()
 {
-
 }
 
 void Chapter1_5::separationOfUnnecessaryConditionsInsideLoopBest()

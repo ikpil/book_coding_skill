@@ -5,6 +5,7 @@
 #include "hand.h"
 #include "rps_result.h"
 #include "actor.h"
+#include "button.h"
 #include <cassert>
 #include <memory>
 
@@ -15,6 +16,8 @@ class Chapter1_5 : public Chapter
 {
 public:
     virtual ~Chapter1_5();
+    Chapter1_5();
+
     virtual void learn();
 
     void useMinMax();
@@ -80,7 +83,10 @@ private:
     float position = 0.0f;
     int direction = 1;
 
+    std::vector<std::shared_ptr<Actor>> actors;
     std::shared_ptr<Actor> player;
+
+    std::vector<std::shared_ptr<Button>> buttons;
 };
 
 }
