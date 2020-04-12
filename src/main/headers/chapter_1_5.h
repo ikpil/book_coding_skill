@@ -6,6 +6,7 @@
 #include "rps_result.h"
 #include "actor.h"
 #include "button.h"
+#include "mouse.h"
 #include <cassert>
 #include <memory>
 
@@ -86,6 +87,7 @@ private:
     std::vector<std::shared_ptr<Actor>> actors;
     std::shared_ptr<Actor> player;
 
+    Mouse mouse;
     std::vector<std::shared_ptr<Button>> buttons;
 };
 

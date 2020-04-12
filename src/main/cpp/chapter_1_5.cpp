@@ -542,6 +542,13 @@ void Chapter1_5::detectLoopBest()
 
 void Chapter1_5::separationOfUnnecessaryConditionsInsideLoopWorst()
 {
+    for (auto i = buttons.begin(); i != buttons.end(); ++i)
+    {
+        if ((*i)->isOverlaps(mouse.position()))
+        {
+
+        }
+    }
 }
 
 void Chapter1_5::separationOfUnnecessaryConditionsInsideLoopBest()
