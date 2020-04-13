@@ -73,6 +73,7 @@ public:
 
     void separationOfUnnecessaryConditionsInsideLoopWorst();
     void separationOfUnnecessaryConditionsInsideLoopBest();
+    std::shared_ptr<Button> findOverlapsButtons(const Position& position) const;
 
 private:
     int health = 0;

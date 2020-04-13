@@ -540,20 +540,48 @@ void Chapter1_5::detectLoopBest()
     }
 }
 
+// 반복문 내에 불필요한 조건식 분리, 나쁜 예, 불필요한 마우스 버튼 체크를 하고 있다
 void Chapter1_5::separationOfUnnecessaryConditionsInsideLoopWorst()
 {
     for (auto i = buttons.begin(); i != buttons.end(); ++i)
     {
         if ((*i)->isOverlaps(mouse.position()))
         {
-
+            if (mouse.isLeftButtonPressed())
+            {
+                (*i)->onPressed();
+                break;
+            }
         }
     }
 }
 
+
+// 반복문 내에 불필요한 조건식 분리, 좋은 예, 불필요한 마우스 버튼 체크를 하고 있다
 void Chapter1_5::separationOfUnnecessaryConditionsInsideLoopBest()
 {
+    if (!mouse.isLeftButtonPressed())
+        return;
 
+    auto button = findOverlapsButtons(mouse.position());
+    if (nullptr == button) {
+        return;
+    }
+
+    button->onPressed();
+}
+
+// 오버렙된 버튼을 찾는 함수
+std::shared_ptr<Button> Chapter1_5::findOverlapsButtons(const Position& position) const
+{
+    for (auto button : buttons)
+    {
+        if (button->isOverlaps(position)) {
+            return button;
+        }
+    }
+
+    return nullptr;
 }
 
 } // namespace coding_skill

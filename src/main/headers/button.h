@@ -8,6 +8,7 @@ class Button
 {
 public:
     bool isOverlaps(const Position& position);
+    void onPressed();
 };
 
 }

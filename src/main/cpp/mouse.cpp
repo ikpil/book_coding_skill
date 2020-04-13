@@ -8,4 +8,9 @@ const Position& Mouse::position()
     return position_;
 }
 
+bool Mouse::isLeftButtonPressed() const
+{
+    return true;
+}
+
 }
