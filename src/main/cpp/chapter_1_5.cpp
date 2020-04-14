@@ -90,6 +90,10 @@ void Chapter1_5::learn()
     // 반복문 내부의 불필요한 조건 분리
     separationOfUnnecessaryConditionsInsideLoopWorst();
     separationOfUnnecessaryConditionsInsideLoopBest();
+
+    // 반복문 분할
+    splitLoopWorst();
+    splitLoopBest();
 }
 
 void Chapter1_5::useMinMax()
@@ -582,6 +586,18 @@ std::shared_ptr<Button> Chapter1_5::findOverlapsButtons(const Position& position
     }
 
     return nullptr;
+}
+
+// 반복문 분할, 나쁜 예, 한 반복문에 두개의 작업을 한다.
+void Chapter1_5::splitLoopWorst()
+{
+
+}
+
+// 반복문 분할, 좋은 예, 한 반복문에 한 작업만 한다.
+void Chapter1_5::splitLoopBest()
+{
+
 }
 
 } // namespace coding_skill
